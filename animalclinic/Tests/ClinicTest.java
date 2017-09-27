@@ -35,7 +35,7 @@ public class ClinicTest {
         String petName = "Jerry";
         Client[] expectedClients = new Client[1];
         expectedClients[0] = new Client("Tom", "Jerry");
-        Client[] actualClients = clinic.findCLientsByPetName(petName);
+        Client[] actualClients = clinic.findClientsByPetName(petName);
         for (int i = 0; i < expectedClients.length; i++) {
             System.out.println(expectedClients[i]);
             System.out.println(actualClients[i]);
