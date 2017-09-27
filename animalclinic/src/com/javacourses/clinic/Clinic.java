@@ -1,5 +1,8 @@
 package com.javacourses.clinic;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Represents animal clinic.
  * @author oleg
@@ -36,30 +39,22 @@ public class Clinic {
         for (int i = 0; i < this.clients.length; i++) {
             if (clients[i] == null) {
                 addClient(i, client);
+                break;
             }
         }
     }
 
 
     /**
-     * Finds owners of pet with specified name.
-     * @param name pet name.
-     * @return array of clients owners of pet with specified name.
+     * Finds owners of pet with specified petName.
+     * @param petName pet name.
+     * @return array of clients owners of pet with specified petName.
      */
-    public Client[] findClientsByPetName(final String name) {
-        Client[] result;
-        int size = 0;
+    public List<Client> findClientsByPetName(final String petName) {
+        List<Client> result = new ArrayList<>();
         for (Client c : this.clients) {
-            if (name.equals(c.getPetName())) {
-                size++;
-            }
-        }
-        result = new Client[size];
-        int i = 0;
-        for (Client c : this.clients) {
-            if (name.equals(c.getPetName())) {
-                result[i] = c;
-                i++;
+            if (petName.equals(c.getPetName())) {
+                result.add(c);
             }
         }
         return result;
@@ -67,27 +62,26 @@ public class Clinic {
 
 
     /**
-     * Finds pet name by client Id.
+     * Finds pet names by client Id.
      * @param clientId owner of seeking pet.
-     * @return pet name.
+     * @return list of pet names.
      */
-    public String findPetByClientId(String clientId) {
-        String result = "";
+    public List<String> findPetsByClientId(String clientId) {
+        List<String> result = new ArrayList<>();
         for (Client client : this.clients) {
             if (client.getId().equals(clientId)) {
-                result = client.getPetName();
+                result.add(client.getPetName());
             }
         }
         return result;
     }
-
-
 
 
     /**
      * Prints client's number, Id and pet.
      */
     public void printClients() {
+        System.out.println(">> Clients list:");
         for (int i = 0; i < clients.length; i++) {
             System.out.printf("No.%d  Owner: %s, Pet: %s\n", i, clients[i].getId(), clients[i].getPetName());
         }

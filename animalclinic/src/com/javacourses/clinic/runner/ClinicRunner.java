@@ -7,14 +7,16 @@ import com.javacourses.clinic.Clinic;
  * Just run main.
  */
 public class ClinicRunner {
-    private Clinic clinic;
-
-    public ClinicRunner(Clinic clinic) {
-        this.clinic = clinic;
-    }
 
     public static void main(String[] args) {
-        Clinic clinic = new Clinic(5);
-        clinic.addClient(ClientFabric.next());
+        final int size = 5;
+        Clinic clinic = new Clinic(size);
+        for (int i = 0; i < size; i++) {
+            clinic.addClient(ClientFabric.next());
+        }
+        clinic.printClients();
+
+        System.out.println(clinic.findPetsByClientId("Bill"));
+        System.out.println(clinic.findPetsByClientId("Greg"));
     }
 }
