@@ -9,21 +9,35 @@ public class Clinic {
     public Client[] getClients() {
         return this.clients;
     }
-
     private final Client[] clients;
+    private int clientsCount;
 
     public Clinic(final int size) {
         this.clients = new Client[size];
+        this.clientsCount = size;
     }
 
 
     /**
      * Adds client.
      * @param position place were adds.
-     * @param client to be added.
+     * @param client for adding.
      */
     public void addClient(final int position, final Client client) {
         this.clients[position] = client;
+    }
+
+
+    /**
+     * Adds client in clinic db. Overrides addClient(pos, client).
+     * @param client for adding.
+     */
+    public void addClient(final Client client) {
+        for (int i = 0; i < this.clients.length; i++) {
+            if (clients[i] == null) {
+                addClient(i, client);
+            }
+        }
     }
 
 
@@ -32,7 +46,7 @@ public class Clinic {
      * @param name pet name.
      * @return array of clients owners of pet with specified name.
      */
-    public Client[] findCLientsByPetName(final String name) {
+    public Client[] findClientsByPetName(final String name) {
         Client[] result;
         int size = 0;
         for (Client c : this.clients) {
@@ -50,6 +64,24 @@ public class Clinic {
         }
         return result;
     }
+
+
+    /**
+     * Finds pet name by client Id.
+     * @param clientId owner of seeking pet.
+     * @return pet name.
+     */
+    public String findPetByClientId(String clientId) {
+        String result = "";
+        for (Client client : this.clients) {
+            if (client.getId().equals(clientId)) {
+                result = client.getPetName();
+            }
+        }
+        return result;
+    }
+
+
 
 
     /**
