@@ -50,7 +50,7 @@ public class Clinic {
         }
         return result;
     }
- 
+
 
     /**
      * Prints client's number, Id and pet.
