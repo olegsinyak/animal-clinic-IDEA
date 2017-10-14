@@ -1,6 +1,6 @@
-package com.javacourses.clinic.runner;
+package com.lessons.clinic.runner;
 
-import com.javacourses.clinic.Clinic;
+import com.lessons.clinic.Clinic;
 
 /**
  * Runner class of animal clinic for manual tests.

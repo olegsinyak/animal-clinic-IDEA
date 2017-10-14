@@ -1,6 +1,6 @@
-package com.javacourses.clinic.runner;
+package com.lessons.clinic.runner;
 
-import com.javacourses.clinic.Client;
+import com.lessons.clinic.Client;
 
 import java.util.Random;
 
